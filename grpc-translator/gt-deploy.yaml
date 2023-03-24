@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qpt-grpc-translator-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qpt-grpc-translator
+  template:
+    metadata:
+      labels:
+        app: qpt-grpc-translator
+    spec:
+      containers:
+      - image: ashwinshirva/qpt-grpc-translator:0.0.43
+        imagePullPolicy: Always
+        name: qpt-grpc-translator
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      restartPolicy: Always
+

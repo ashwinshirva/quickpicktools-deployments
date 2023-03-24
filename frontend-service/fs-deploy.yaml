@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qpt-frontend-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qpt-frontend
+  template:
+    metadata:
+      labels:
+        app: qpt-frontend
+    spec:
+      containers:
+      - image: ashwinshirva/qpt-frontend:0.0.55
+        imagePullPolicy: Always
+        name: qpt-frontend
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qpt-ingress
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: qpt-grpc-translator-service
+            port:
+              number: 8080
+        path: /to-jpg/png-to-jpg
+        pathType: Prefix
+      - backend:
+          service:
+            name: qpt-frontend-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
