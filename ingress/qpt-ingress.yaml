@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: qpt-ingress
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 20m
 spec:
   rules:
   - http:
@@ -21,4 +23,5 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+
 
